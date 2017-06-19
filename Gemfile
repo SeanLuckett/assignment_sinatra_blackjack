@@ -6,6 +6,7 @@ gem 'sinatra', '~> 1.4.8'
 
 group :development do
   gem 'pry-byebug', '~> 3.4.2'
+  gem 'sinatra-contrib', '~> 1.4.7'
 end
 
 group :test do

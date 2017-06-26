@@ -15,13 +15,13 @@ get '/' do
 end
 
 get '/blackjack' do
-  deck = Deck.new(JSON.parse(load_deck))
+  deck = Deck.new(JSON.parse(session[:deck]))
   player_hand = []
   dealer_hand = []
 
   2.times do
-    player_hand << deck.deal_card
-    dealer_hand << deck.deal_card
+    player_hand << deck.top_card
+    dealer_hand << deck.top_card
   end
 
   session[:deck] = deck.cards.to_json
@@ -36,8 +36,8 @@ class Deck
     @cards = deck.empty? ? build_deck.shuffle : deck
   end
 
-  def deal_card
-    @cards.shift
+  def top_card
+    @cards.pop
   end
 
   private
